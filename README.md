@@ -1,112 +1,132 @@
-# Prettier
+# 14 Model-View-Controller (MVC): Tech Blog
 
-Developers tend to have a lot of opinions on how to format code. Do you use single quotes or double quotes for strings? Is it okay to have trailing commas on object properties? How often should you add spaces in between keywords? When should chained methods be moved to a new line?
+## Your Task
 
-As a team, you can agree on certain standards and use a tool like ESLint to highlight when your code doesn't meet these standards. However, it still falls on the developer to actually make those formatting changes. Fortunately, additional tools like **Prettier** can handle the formatting for you.
+Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
 
-In this activity, we'll add Prettier to an existing codebase, link it with an ESLint configuration, and set up VS Code to run Prettier automatically.
+Your task this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
-## Instructions
+## User Story
 
-Navigate to the `Unsolved` directory from the command line and run the following commands:
-
-```bash
-npm install
-npm install prettier eslint-config-prettier --save-dev
+```md
+AS A developer who writes about tech
+I WANT a CMS-style blog site
+SO THAT I can publish articles, blog posts, and my thoughts and opinions
 ```
 
-This will install ESLint from the `package.json` file and add Prettier and the ESLint plugin as extra dependencies.
+## Acceptance Criteria
 
-To see Prettier in action, first open the `example.js` file and note how the `if` statements are structured, as the following example shows:
-
-```js
-if (!isNaN(num)) {
-  console.log("Not a number!");
-}
-else if (num < 0) {
-  console.log("Please provide a positive number.");
-}
-else if (num >= 1000) {
-  console.log("This number is too big.");
-}
-else {
-  console.log("Thank you!");
-}
+```md
+GIVEN a CMS-style blog site
+WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on any other links in the navigation
+THEN I am prompted to either sign up or sign in
+WHEN I choose to sign up
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I am signed in to the site
+THEN I see navigation links for the homepage, the dashboard, and the option to log out
+WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+WHEN I click on an existing blog post
+THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+WHEN I enter a comment and click on the submit button while signed in
+THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+WHEN I click on the dashboard option in the navigation
+THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
+WHEN I click on the button to add a new blog post
+THEN I am prompted to enter both a title and contents for my blog post
+WHEN I click on the button to create a new blog post
+THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+WHEN I click on one of my existing posts in the dashboard
+THEN I am able to delete or update my post and taken back to an updated dashboard
+WHEN I click on the logout option in the navigation
+THEN I am signed out of the site
+WHEN I am idle on the site for more than a set time
+THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
 ```
 
-Next, run the following command from the `Unsolved` directory:
+## Mock-Up
 
-```bash
-npx prettier --write example.js
-```
+The following animation demonstrates the application functionality:
 
-Recall that `npx` is a command to run Node.js packages, whereas `npm` is mainly used to install packages.
+![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./Assets/14-mvc-homework-demo-01.gif) 
 
-Now revisit the `example.js` file and notice how the `if` statements have been re-formatted. One of Prettier's built-in rules is to keep the closing bracket and the next `else if` on the same line.
+## Getting Started
 
-You can specify additional Prettier rules with a configuration or config file. In the `Unsolved` directory, create a new file called `.prettierrc.json` and add the following code to this file:
+Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
 
-```json
-{
-  "singleQuote": true
-}
-```
+You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
 
-Run the `npx prettier --write example.js` command again, and note how Prettier changed all of the double quotes to single quotes!
+**Note**: The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie. When you are idle on the site for more than a set time, the cookie will expire and you will be required to log in again to start a new session. This is the default behavior and you do not have to do anything to your application other than implement the npm package.
 
-Continually executing this command isn't a great workflow, though. A better experience would be to let your code editor do it for you. This isn't a built-in feature of VS Code, so you'll need to install the [VS Code Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+## Grading Requirements
 
-Once installed, the extension will look for any `.prettierrc.json` file and use those settings for formatting. Open the `example2.js` file and press Ctrl+Shift+P on Windows or Command+Shift+P on macOS, then select "Format Document with" from the dropdown. Alternatively, you can type that into the search bar if it doesn't appear. Then select the "Prettier - Code formatter" option. This will auto-format the currently opened document.
+> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
+>
+> * A repository that has no code
+>
+> * A repository that includes a unique name but nothing else
+>
+> * A repository that includes only a README file but nothing else
+>
+> * A repository that only includes starter code
 
-You can also configure VS Code to do this each time you save a file. Navigate to Preferences (under the Code menu on macOS or under the File menu on Windows), and select Settings. In the Settings tab, search for "format" and select the option to Format on Save. You will see something like the following image:
+This Challenge is graded based on the following criteria:
 
-![In the VS Code Settings tab, the Format on Save option is selected.](./Images/01-format-on-save.png)
+### Technical Acceptance Criteria: 40%
 
-Revisit the `example2.js` file and add the following code somewhere inside it:
+* Satisfies all of the preceding acceptance criteria plus the following:
 
-```js
-const obj = {
-  name: "Lernantino",
-  occupation: "Developer"
-};
-```
+    * Application’s folder structure follows the Model-View-Controller paradigm.
 
-Save the file, and you'll see Prettier take over by changing the double quotes and adding a trailing comma to `occupation`.
+    * Uses the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views.
 
-Now open the `Unsolved/README.md` file and add the following code example as a `js` snippet somewhere inside it:
+    * Application must be deployed to Heroku.
 
-```js
-// a bad example of declaring a string
-const hello = "hello"
-```
+### Deployment: 32%
 
-If you save the file, Prettier will correct the intentionally "bad" example code! You most likely don't need Prettier formatting markdown files, so you can tell Prettier to ignore them.
+* Application deployed at live URL.
 
-In the `Unsolved` directory, create a new file called `.prettierignore` and add the following line to it:
+* Application loads with no errors.
 
-```text
-*.md
-```
+* Application GitHub URL submitted.
 
-This will disable Prettier on any file with a `.md` extension.
+* GitHub repository contains application code.
 
-Lastly, we should inform ESLint that we are using Prettier. Because we are relying on Prettier for formatting rules, we don't need ESLint causing any confusion by highlighting things that Prettier doesn't care about.
+### Application Quality: 15%
 
-Open the `.eslintrc.json` file and add the following property to the config object:
+* User experience is intuitive and easy to navigate.
 
-```json
-"extends": ["prettier"]
-```
+* User interface style is clean and polished.
 
-This will turn off a handful of rules that typically conflict between the two libraries. Don't worry; ESLint will still provide warnings for other logic-related issues!
+* Application resembles the mock-up functionality provided in the Challenge instructions.
 
-## Hints
+### Repository Quality: 13%
 
-* Double-check that Prettier formatted your code the way you intended. Sometimes Prettier makes incorrect assumptions, particularly with HTML documents.
+* Repository has a unique name.
 
-* More information on how to set up Prettier can be found in the [Prettier install guide](https://prettier.io/docs/en/install.html).
+* Repository follows best practices for file structure and naming conventions.
 
-* The [Prettier documentation on options](https://prettier.io/docs/en/options.html) explains other configurations that you can add to the `.prettierrc.json` file.
+* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
+
+* Repository contains multiple descriptive commit messages.
+
+* Repository contains quality readme file with description, screenshot, and link to deployed application.
+
+## Review
+
+You are required to submit BOTH of the following for review:
+
+* The URL of the functional, deployed application.
+
+* The URL of the GitHub repository, with a unique name and a readme describing the project.
 
 ---
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
