@@ -17,8 +17,8 @@ const authController = {
     }
   },
 
-  // Implement login, logout, and requireAuth functions
-  // ...
+  // need to create login, logout, and requireAuth functions
+
 
 };
 

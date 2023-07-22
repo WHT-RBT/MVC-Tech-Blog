@@ -30,8 +30,7 @@ const postController = {
     }
   },
 
-  // Implement getAddPostPage and addPost functions
-  // ...
+  // need to create getAddPostPage and addPost functions
 
 };
 
