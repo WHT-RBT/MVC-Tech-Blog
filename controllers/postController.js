@@ -14,7 +14,7 @@ const postController = {
       });
       res.render('post', { blogPost });
     } catch (err) {
-      res.status(404).json({ error: 'Blog post not found.' });
+      res.status(404).json({ error: 'Blog post not found!' });
     }
   },
 
@@ -26,7 +26,7 @@ const postController = {
       await Comment.create({ content, userId, blogPostId });
       res.redirect(`/post/${blogPostId}`);
     } catch (err) {
-      res.status(500).json({ error: 'Failed to add comment.' });
+      res.status(500).json({ error: 'Failed to add comment!' });
     }
   },
 
