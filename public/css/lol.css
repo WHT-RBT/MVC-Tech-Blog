@@ -1,0 +1,263 @@
+:root {
+    --primary: #000000;
+    --secondary: #dce9d5;
+    --tertiary: #788585;
+    --light-dark: #a1a0a1;
+    --dark: #00ffff;
+    --border-radius: 0.3rem;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--primary);
+    margin: 25px;
+    padding: 25px;
+    font-family: "courier";
+    color: var(--dark);
+    line-height: 1.5;
+    font-size: 24px;
+ 
+  }
+button {
+  padding: 6px 30px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #00ffff;;
+  transition: var(--base-transition);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button:hover {
+  background-color: #ffee00;
+  transition: var(--base-transition);
+}
+
+button:active {
+  background-color: var(--main-color);
+}
+
+/* -------- --------- --------- Header */
+.wrapper {
+  position: relative;
+}
+
+header {
+  height: 150px;
+  top: 0;
+  width: 100%;
+  position: sticky;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  backdrop-filter: blur(6px);
+}
+
+#bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 50px;
+
+}
+
+#header-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  cursor: pointer;
+  user-select: none;
+  width: 275px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--main-color);
+  text-align: center;
+}
+
+nav {
+  margin-bottom: 25px;
+}
+
+nav a {
+  user-select: none;
+  font-size: 35px;
+  text-decoration: none;
+  color: white;
+  padding: 0 15px 0 15px;
+  align-items: right;
+  
+}
+
+nav a:hover {
+  color: rgb(0, 255, 255);
+}
+
+nav a:active {
+  color: rgba(0, 255, 255, 0.6);
+}
+
+#loggedin {
+  color: white;
+  font-size: 22px;
+}
+
+#header-head {
+  margin-top: 20px;
+}
+
+.login-container,
+.signup-container {
+  margin: 20px 32px;
+}
+
+.login-container h1,
+.signup-container h1 {
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+#login-btn,
+#submit-btn {
+  margin-top: 0;
+}
+
+#add-post {
+  margin-top: 5px;
+}
+#login-form,
+#signup-form,
+#addPost-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#login-form input,
+#signup-form input,
+#addPost-form input {
+  margin-bottom: 6px;
+  height: 35px;
+  width: 275px;
+  padding: 3px 0;
+  text-indent: 7px;
+  border-radius: 3px;
+  border: 1px solid rgba(177, 174, 15, 0.568);
+}
+#login-form input:nth-child(2),
+#signup-form input:nth-child(3),
+#addPost-form input:nth-child(2) {
+  margin-bottom: 0;
+}
+#login-form input::placeholder,
+#signup-form input::placeholder,
+#addPost-form input::placeholder,
+#addPost-form textarea::placeholder {
+  opacity: 0.9;
+  font-size: 15px;
+}
+
+#loginHr {
+  margin-bottom: 30px;
+  margin-top: 35px;
+  width: 275px;
+  margin-left: 32px;
+  opacity: 0.5;
+}
+
+#addpost-status {
+  width: 60%;
+  font-family: inherit;
+  font-weight: 400;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+#signup-status {
+  width: 60%;
+  font-family: inherit;
+  font-weight: 400;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+#signin-status {
+  width: 60%;
+  font-family: inherit;
+  font-weight: 400;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  #bg,
+  header {
+    height: 100px;
+  }
+
+  header h1 {
+    font-size: 25px;
+    width: 175px;
+  }
+
+  #header-head {
+    margin-top: 10px;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav a {
+    font-size: 25px;
+    margin-left: 8px;
+  }
+
+  #loggedin {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 670px) {
+  header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  header h1 {
+    font-size: 17px;
+    width: 125px;
+  }
+
+  nav {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  nav a {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+
+  #loggedin {
+    position: relative;
+    font-size: 14px;
+  }
+}
+

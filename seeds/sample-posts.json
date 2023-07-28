@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Introduction to Artificial Intelligence",
+    "content": "Artificial Intelligence (AI) is the simulation of human intelligence in machines...",
+    "user": "Riley",
+    "comments": [
+      {
+        "comment_text": "Great article! I learned a lot.",
+        "user": "Lilly"
+      },
+      {
+        "comment_text": "This is fascinating. Thanks for sharing!",
+        "user": "RueRue"
+      }
+    ]
+  },
+  {
+    "title": "The Future of Blockchain Technology",
+    "content": "Blockchain technology has the potential to revolutionize various industries...",
+    "user": "Holly",
+    "comments": [
+      {
+        "comment_text": "I'm excited to see how blockchain evolves in the future.",
+        "user": "Lilly"
+      },
+      {
+        "comment_text": "Blockchain is the future!",
+        "user": "lucky"
+      }
+    ]
+  },
+  {
+    "title": "Getting Started with Python Programming",
+    "content": "Python is a popular programming language known for its simplicity and versatility...",
+    "user": "Lacy1",
+    "comments": [
+      {
+        "comment_text": "Python is my favorite language to code with!",
+        "user": "Daisy"
+      },
+      {
+        "comment_text": "Great tutorial. Thanks!",
+        "user": "Ally1"
+      }
+    ]
+  }
+]

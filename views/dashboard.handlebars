@@ -1,0 +1,41 @@
+<div class='addPost-container'>
+    <h1>Add a Post</h1>
+    <form id='addPost-form'>
+        <input type='text' id='add-post-title' placeholder='Post Title *required' />
+        <textarea type='text' id='add-post-desc' placeholder='Post description *required'></textarea>
+
+        <h1 id='addpost-status'>Enter your post here</h1>
+        <button id='add-post' type='submit'>Post</button>
+    </form>
+</div>
+<hr id='dashboardHr' />
+<h1 id='your-posts'>Your Posts</h1>
+
+{{!-- Begin dashboard.handlebars content --}}
+{{#if posts}}
+<div id='dashboard-posts'>
+    {{#each posts as |post|}}
+        <div id='single-post'>
+            <div id='post-header'>
+                <h1 id='post-title'>{{post.title}}</h1>
+                <p id='post-date'>{{format_date post.date}}</p>
+            </div>
+            <p id='post-body'>
+                {{post.description}}
+            </p>
+            <div id='post-controls'>
+                <button data-post-id={{post.postId}} class='delete-post-id' id='delete-post-{{post.postId}}'>Delete Post</button>
+                <button data-post-id={{post.postId}} id='view-comments-{{post.postId}}' class='view-comments'>View Comments</button>
+                <button data-post-id={{post.postId}} class='confirm-post' id='confirm-post-{{post.postId}}'>Confirm</button>
+                <p id='edit-post-status'>Please make sure your title and post have more than 5 characters before posting</p>
+            </div>
+        </div>
+    {{/each}}
+</div>
+{{else}}
+    <p id='no-posts'>You have not posted anything</p>
+{{/if}}
+{{!-- End dashboard.handlebars content --}}
+
+<script src='/js/add-post.js'></script>
+<script src='/js/delete-comment.js'></script>
