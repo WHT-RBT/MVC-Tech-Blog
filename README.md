@@ -1,132 +1,70 @@
-# 14 Model-View-Controller (MVC): Tech Blog
+# MVC Tech Blog
 
-## Your Task
+<br>
 
-Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
+![Github MIT licence](https://img.shields.io/badge/license-MIT-blue)
 
-Your task this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+![HTML](https://img.shields.io/badge/-HTML-LTGREEN) ![CSS](https://img.shields.io/badge/-CSS-gray)  ![NODE](https://img.shields.io/badge/-NODE-orange) ![JS](https://img.shields.io/badge/-JS-yellow) ![SQL](https://img.shields.io/badge/-SQL-darkred) ![MySQL2](https://img.shields.io/badge/-MySQL2-darkgreen) ![Dotenv](https://img.shields.io/badge/-Dotenv-purple)  ![Sequelize](https://img.shields.io/badge/-Sequelize-blue) 
+![Handlebars](https://img.shields.io/badge/Handlebars-8A2BE2) ![JSON](https://img.shields.io/badge/JSON-0F2BF2)
 
-## User Story
+<br>
 
-```md
-AS A developer who writes about tech
-I WANT a CMS-style blog site
-SO THAT I can publish articles, blog posts, and my thoughts and opinions
-```
+## Table of Contents
 
-## Acceptance Criteria
 
-```md
-GIVEN a CMS-style blog site
-WHEN I visit the site for the first time
-THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
-WHEN I click on the homepage option
-THEN I am taken to the homepage
-WHEN I click on any other links in the navigation
-THEN I am prompted to either sign up or sign in
-WHEN I choose to sign up
-THEN I am prompted to create a username and password
-WHEN I click on the sign-up button
-THEN my user credentials are saved and I am logged into the site
-WHEN I revisit the site at a later time and choose to sign in
-THEN I am prompted to enter my username and password
-WHEN I am signed in to the site
-THEN I see navigation links for the homepage, the dashboard, and the option to log out
-WHEN I click on the homepage option in the navigation
-THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
-WHEN I click on an existing blog post
-THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
-WHEN I enter a comment and click on the submit button while signed in
-THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
-WHEN I click on the dashboard option in the navigation
-THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-WHEN I click on the button to add a new blog post
-THEN I am prompted to enter both a title and contents for my blog post
-WHEN I click on the button to create a new blog post
-THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
-WHEN I click on one of my existing posts in the dashboard
-THEN I am able to delete or update my post and taken back to an updated dashboard
-WHEN I click on the logout option in the navigation
-THEN I am signed out of the site
-WHEN I am idle on the site for more than a set time
-THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
-```
+* [Project Description](#project-description)
 
-## Mock-Up
+* [Key Features](#key-features)
 
-The following animation demonstrates the application functionality:
+* [MockUp](#mockup)
+ 
+* [Links](#links)
 
-![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./Assets/14-mvc-homework-demo-01.gif) 
+* [License](#license)
 
-## Getting Started
+<br>
 
-Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
 
-You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
+## Project Description
 
-**Note**: The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie. When you are idle on the site for more than a set time, the cookie will expire and you will be required to log in again to start a new session. This is the default behavior and you do not have to do anything to your application other than implement the npm package.
+The Blog Post Application is a web-based platform that empowers users to create, publish, and share their thoughts, ideas, and stories with a wide audience. Designed with simplicity in mind, this application allows bloggers, writers, and content creators to express themselves through engaging articles and blog posts.
 
-## Grading Requirements
+Whether it's sharing personal experiences, providing insights on specific topics, or showcasing creative works with TechBlog.
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
 
-This Challenge is graded based on the following criteria:
+## Key Features
 
-### Technical Acceptance Criteria: 40%
+User Registration and Authentication: Users can easily create an account and log in securely to access the full range of features, including creating, editing, and managing their blog posts.
 
-* Satisfies all of the preceding acceptance criteria plus the following:
+Create and Edit Blog Posts: Once logged in, users can compose their blog posts using a user-friendly and intuitive editor. They can add text, images, and formatting to craft compelling and visually appealing content.
 
-    * Application’s folder structure follows the Model-View-Controller paradigm.
+Publication and Sharing: With just a click of a button, users can publish their blog posts and make them available to a global audience. The application provides social media integration, enabling easy sharing across various platforms.
 
-    * Uses the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views.
+User Interaction: Readers can leave comments on blog posts, initiating meaningful conversations with the community.
 
-    * Application must be deployed to Heroku.
+User Profiles: Each user gets a personalized profile page showcasing their published blog posts and engagement metrics.
 
-### Deployment: 32%
 
-* Application deployed at live URL.
+<br>
 
-* Application loads with no errors.
+## Mockup
 
-* Application GitHub URL submitted.
+![HomePage](public/images/homepage.png)
 
-* GitHub repository contains application code.
 
-### Application Quality: 15%
+## Links
 
-* User experience is intuitive and easy to navigate.
+Heroku Link:  <a href="https://wr-mvc-tech-blog-e1642ee86913.herokuapp.com/"> MVC TechBlog</a>
+<br>
 
-* User interface style is clean and polished.
+GitHub Repo Link:   <a href="https://github.com/WHT-RBT/MVC-Tech-Blog.git">GitHub Repo </a>
 
-* Application resembles the mock-up functionality provided in the Challenge instructions.
 
-### Repository Quality: 13%
+GitHub Profile Link: <a href="https://github.com/WHT-RBT"> GitHub Profile </a>
 
-* Repository has a unique name.
+<br>
 
-* Repository follows best practices for file structure and naming conventions.
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
+## License
 
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+NOTICE: This application is covered under the MIT License
