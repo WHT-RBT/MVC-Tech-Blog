@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Add this before your routes
+app.use(express.static('public'));
+
 router.get('/', (req,res) => {
   console.log("HOME ROUTE GOT HITTTTT")
   res.render("home")
@@ -12,7 +15,7 @@ router.get('/login', (req, res) => {
 
   // If the user is already logged in, redirects the request to another route
   if (req.session.logged_in) {
-    res.redirect('public/js/profile.js');
+    res.redirect('./public/js/dashboard.js');
     return;
   }
 

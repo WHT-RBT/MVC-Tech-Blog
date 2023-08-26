@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/public/css/lol.css">
+  <link rel="stylesheet" href="./css/lol.css">
 
 {{#if loggedIn}}
   <h1>Welcome, {{username}}!</h1>
@@ -9,6 +9,6 @@
     <h2>{{title}}</h2>
     <p>{{content}}</p>
     <p>Posted by {{user.username}}</p>
-    <a href="/api/posts/post/{{id}}">View Post</a>
+    <a href="/api{{id}}">View Post</a>
   </div>
 {{/each}}

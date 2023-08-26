@@ -1,3 +1,4 @@
+// Define the signupFormHandler function outside of the DOMContentLoaded event listener
 const signupFormHandler = async (event) => {
     event.preventDefault();
 
@@ -20,6 +21,7 @@ const signupFormHandler = async (event) => {
     }
 };
 
-document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+// Add the event listener inside the DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+});
