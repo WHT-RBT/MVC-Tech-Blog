@@ -1,4 +1,3 @@
-// Define the signupFormHandler function outside of the DOMContentLoaded event listener
 const signupFormHandler = async (event) => {
     event.preventDefault();
 
