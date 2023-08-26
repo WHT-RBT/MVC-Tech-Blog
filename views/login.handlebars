@@ -1,14 +1,35 @@
-<script src="/js/login.js"></script>
-<div class='login-container'>
-  <h1>LogIn</h1>
-  <form id='login-form'>
-<input type="email" id="email-input" placeholder="Email *required" />
-    <input
-      type='password'
-      id='password-login'
-      placeholder='Password  *required'
-    />
-    <h1 id='signin-status'>Please sign in</h1>
-    <button id='login-btn' type='submit'>LogIn</button>
-  </form>
-</div>
+<html>
+<head>
+<link rel="stylesheet" href="/public/css/lol.css">
+</head>
+</head>
+<body>
+  <div class="login-container"> 
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="login-heading">LogIn</h2>
+
+        <form class="form login-form">
+          <div class="form-group">
+            <label for="email-login">Email:</label>
+            <input class="form-input form-large" type="text" id="email-login" />
+          </div>
+          <div class="form-group">
+            <label for="password-login">Password:</label>
+            <input class="form-input form-large" type="password" id="password-login" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-large" type="submit">LogIn</button>
+          </div>
+        </form>
+      <p class="signup-cta"> 
+        <a href="/public/js/signup.js">Don't have a Login, Sign up now!</a>
+      </p>      
+      </div>
+    </div>
+  </div>
+
+  <script src="/public/js/login.js"></script>
+
+</body>
+</html>

@@ -1,7 +1,6 @@
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
 const userData = require('./userData.json');
-const projectData = require('./projectData.json');
 const samplePosts = require('./sample-posts.json');
 
 const seedDatabase = async () => {

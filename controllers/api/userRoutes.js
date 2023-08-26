@@ -1,60 +1,67 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// Allow users to sign up
-router.post('/signup', (req, res) => {
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        name: req.body.name || null, 
-    })
-        .then((dbUserData) => {
-            req.session.save(() => {
-                req.session.user_id = dbUserData.id;
-                req.session.username = dbUserData.username;
-                req.session.loggedIn = true;
-                res.json(dbUserData);
-            });
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
 
-// Allow users to login
-router.post('/login', (req, res) => {
-    User.findOne({
-        where: {
-            email: req.body.email,
-        },
-    }).then((dbUserData) => {
-        // If no user exists, return error
-        if (!dbUserData) {
-            res.status(400).json({ message: 'There is no user with that email address!' });
-            return;
-        }
+//Creates a new user when submitted through the fetch request from signupFormHandler in the login.js
+router.post('/', async (req, res) => {
+    try {
+        console.log(req.body)
+        const userData = await User.create(req.body);
 
-        // Check submitted password
-        const validPassword = dbUserData.checkPassword(req.body.password);
-        // If not valid, notify user
-        if (!validPassword) {
-            res.status(400).json({ message: 'Incorrect! Try again.' });
-            return;
-        }
+        //saves the session as it begins through logging in the user that just signed up.
         req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
+            req.session.user_id = userData.id;
+            req.session.logged_in = true;
+
+            res.status(200).json(userData);
         });
-    });
+    } catch (err) {
+        res.status(400).json(err);
+    }
 });
 
-// Terminate sessions and redirect to the main page
+
+//if a user wants to login through the login page, this function makes sure the login creds match a single user from the dn
+router.post('/login', async (req, res) => {
+    try {
+        //first, make sure that you take the email submitted by user in req matches one email, and alerts if it doesn't match. 
+        const userData = await User.findOne({ where: { email: req.body.email } });
+        console.log(userData)
+
+        if (!userData) {
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+
+        //makes sure that the password from the user req matches the password of user in the db with that email. It does this through the instance of the model that is called in User.findOne.
+        const validPassword = await userData.checkPassword(req.body.password);
+
+        if (!validPassword) {
+            res
+                .status(400)
+                .json({ message: 'Incorrect email or password, please try again' });
+            return;
+        }
+
+        //starts the session and logs the user in. 
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.name = userData.name;
+            req.session.logged_in = true;
+
+            res.json({ user: userData, message: 'You are now logged in!' });
+        });
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+//ends the session with logs the user out. 
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
         });

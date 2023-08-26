@@ -1,3 +1,10 @@
+<html>
+  <head>
+    <title>Welcome to your Dashboard!</title>
+<link rel="stylesheet" href="/public/css/lol.css">
+  </head>
+  <body>
+
 <div class='addPost-container'>
     <h1>Add a Post</h1>
     <form id='addPost-form'>
@@ -13,7 +20,7 @@
 
 {{!-- Begin dashboard.handlebars content --}}
 {{#if posts}}
-<div id='dashboard-posts'>
+<div id='dashboard'>
     {{#each posts as |post|}}
         <div id='single-post'>
             <div id='post-header'>
@@ -36,6 +43,8 @@
     <p id='no-posts'>You have not posted anything</p>
 {{/if}}
 {{!-- End dashboard.handlebars content --}}
-
-<script src='/js/add-post.js'></script>
-<script src='/js/delete-comment.js'></script>
+  </body>
+<script src='../public/js/dashboard.js'></script>
+<script src='../public/js/add-post.js'></script>
+<script src='../public/js/delete-comment.js'></script>
+</html>

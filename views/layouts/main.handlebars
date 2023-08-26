@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>+
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/lol.css"/>
-</head>
+  <title>{{pageTitle}}</title>
+  <link rel="stylesheet" href="./css/lol.css">
+  </head>
+
 <body>
-   
-   {{! displays if the user is logged in }}
+  
+{{! displays if the user is logged in }}
           {{#if username}}
             <p id='loggedin'><span>Logged in as</span>
               <em style='font-weight: 800'>{{username}}</em></p>
@@ -20,18 +21,18 @@
                 {{#if loggedIn}}
                   <a class='navItem' id='logout'>Logout</a>
                 {{else}}
-                  <a class='navItem' href='/login'>Login</a>
+                  <a class='navItem' href='/public/js/login.js'>Login</a>
           {{/if}}
         </nav>
 
         <div id='bg'></div>
       </header>
-<main>
+      <main>
         {{{body}}}
       </main>
     </div>
   </body>
 </html>
 {{#if loggedIn}}
-  <script src='/js/logout.js'></script>
+  <script src='/public/js/logout.js'></script>
 {{/if}}
