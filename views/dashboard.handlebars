@@ -1,21 +1,29 @@
   <head>
     <title>Welcome to your Dashboard!</title>
 <link rel="stylesheet" href="{{"/css/lol.css"}}">
+ <style>
+        /* Add your custom styles here */
+        #add-post-desc {
+            width: 100%; /* Adjust the width as needed */
+            height: 150px; /* Adjust the height as needed */
+            resize: vertical; /* Allow vertical resizing */
+        }
+    </style>
   </head>
   <body>
 
 <div class='addPost-container'>
     <h1>Add a Post</h1>
     <form id='addPost-form'>
-        <input type='text' id='add-post-title' placeholder='Post Title *required' />
-        <textarea type='text' id='add-post-desc' placeholder='Post description *required'></textarea>
+        <input type='text' id='add-post-title' placeholder='*required: Post Title ' />
+        <textarea type='text' id='add-post-desc' placeholder='*required: Enter your Post here...'></textarea>
 
-        <h1 id='addpost-status'>Enter your post here</h1>
-        <button id='add-post' type='submit'>Post</button>
+        <h1 id='addpost-status'>Let's Post something!</h1>
+        <button id='add-post' type='submit'>Post!</button>
     </form>
 </div>
 <hr id='dashboardHr' />
-<h1 id='your-posts'>Your Posts</h1>
+<h1 id='your-posts'>Your Submitted Posts</h1>
 
 {{!-- Begin dashboard.handlebars content --}}
 {{#if posts}}
