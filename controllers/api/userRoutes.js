@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User } = require('../api');
 
 
 //Creates a new user when submitted through the fetch request from signupFormHandler in the login.js

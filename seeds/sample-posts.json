@@ -3,6 +3,7 @@
     "title": "Introduction to Artificial Intelligence",
     "content": "Artificial Intelligence (AI) is the simulation of human intelligence in machines...",
     "user": "Riley",
+    "name": "Riley", 
     "comments": [
       {
         "comment_text": "Great article! I learned a lot.",
@@ -18,6 +19,7 @@
     "title": "The Future of Blockchain Technology",
     "content": "Blockchain technology has the potential to revolutionize various industries...",
     "user": "Holly",
+    "name": "Holly", 
     "comments": [
       {
         "comment_text": "I'm excited to see how blockchain evolves in the future.",
@@ -33,6 +35,7 @@
     "title": "Getting Started with Python Programming",
     "content": "Python is a popular programming language known for its simplicity and versatility...",
     "user": "Lacy1",
+    "name": "Lacy1", 
     "comments": [
       {
         "comment_text": "Python is my favorite language to code with!",

@@ -1,9 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class User extends Model {
+}
 
-Post.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,20 +16,17 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    email: {
       type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
+      unique: true,
+      validate: {
+        isEmail: true,
       },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
@@ -36,8 +34,7 @@ Post.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'user', 
   }
 );
-
-module.exports = Post;
+module.exports = User;
